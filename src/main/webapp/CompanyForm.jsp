@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Angular JS Forms</title>
-    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src = "js/angular/angular.min.js"></script>
 
     <style>
         table, th , td {
@@ -132,18 +132,26 @@
 <script>
     var mainApp = angular.module("mainApp", []);
 
+    /*mainApp.config(function($httpProvider) {
+        //Enable cross domain calls
+        $httpProvider.defaults.useXDomain = true;
+
+        //Remove the header used to identify ajax call  that would prevent CORS from working
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    });*/
+
     mainApp.controller('companyController', function($scope, $http, $window) {
 
         var companyId;
         /* Load all company grid data */
-        var getAllCompanyURL = 'http://localhost:8080/SpringMVCAngular/getAllCompanies';
+        var getAllCompanyURL = 'getAllCompanies';
         $scope.detail = [];
         $http.get(getAllCompanyURL).success(function(response) {
             $scope.detail=response.companies;
         });
 
         /* Create company data */
-        var createCompanyURL = "http://localhost:8080/SpringMVCAngular/createCompany";
+        var createCompanyURL = "createCompany";
         $scope.createNewCompany = function() {
             var dataString = 'name='+$scope.name + '&address=' + $scope.address + '&city=' + $scope.city + '&country=' + $scope.country + '&';
             if($scope.email != '')
@@ -159,7 +167,7 @@
                 data: dataString,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function() {
-                var getAllCompanyURL = 'http://localhost:8080/SpringMVCAngular/getAllCompanies';
+                var getAllCompanyURL = 'getAllCompanies';
                 $scope.name='';
                 $scope.address='';
                 $scope.city='';
@@ -175,13 +183,13 @@
         }
 
         /* Load company data */
-        var loadCompanyDataURL = "http://localhost:8080/SpringMVCAngular/getCompany/";
+        var loadCompanyDataURL = "getCompany/";
         $scope.selectData = {}
         $scope.loadCompanyData = function() {
             var id = $scope.selectData.company.companyId;
             companyId = id;
             loadCompanyDataURL += id;
-            $window.alert("company id:" + id);
+
             $http.get(loadCompanyDataURL).success(function(response) {
                 var jsonResp = response;
                 var companyName = jsonResp.companies.name;
@@ -199,14 +207,12 @@
                 $scope.email=email;
                 $scope.contactNo=contactNo;
                 $scope.beneficiary=beneficiary;
-
-                $window.alert("company id:" + id + ",companyName=" + companyName + ",address="+address+",city="+city+",country="+country+",email="+email+",contactNo="+contactNo+",beneficiary="+beneficiary);
             });
 
         }
 
         /* Update company data */
-        var updateCompanyURL = "http://localhost:8080/SpringMVCAngular/updateCompany";
+        var updateCompanyURL = "updateCompany";
         $scope.updateCompanyData = function() {
             var dataString = 'name='+$scope.name + '&address=' + $scope.address + '&city=' + $scope.city + '&country=' + $scope.country + '&';
             if($scope.email != '')
@@ -222,7 +228,7 @@
                 data: dataString,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function() {
-                var getAllCompanyURL = 'http://localhost:8080/SpringMVCAngular/getAllCompanies';
+                var getAllCompanyURL = 'getAllCompanies';
                 $scope.name='';
                 $scope.address='';
                 $scope.city='';
@@ -237,16 +243,6 @@
             });
         }
 
-        /*$scope.submit = function() {
-            var URL = 'http://localhost:8080/SpringMVCAngular/getAllCompanies';
-            $http.get(URL).success(function(response) {
-                var jsonResp = response;
-                var companyName = jsonResp.companies[0].name;
-                var companyId = jsonResp.companies[0].companyId;
-                $window.alert("Company Name :" + companyName + ", Company Id: " + companyId + ",Entered first name:" + $scope.firstName);
-
-            });
-        }*/
     });
 
 </script>
