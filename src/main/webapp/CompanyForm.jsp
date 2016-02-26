@@ -122,7 +122,7 @@
                 <td>{{x.email}}</td>
                 <td>{{x.contactNo}}</td>
                 <td>{{x.beneficiary}}</td>
-                <td><input type="radio" ng-click="selectData.company = x"></td>
+                <td><input type="radio" id="radiobtn" ng-click="selectData.company = x"></td>
                 <td><a href="#" ng-click="loadCompanyData()">Load Data</a></td>
             </tr>
         </table>
@@ -131,14 +131,6 @@
 
 <script>
     var mainApp = angular.module("mainApp", []);
-
-    /*mainApp.config(function($httpProvider) {
-        //Enable cross domain calls
-        $httpProvider.defaults.useXDomain = true;
-
-        //Remove the header used to identify ajax call  that would prevent CORS from working
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    });*/
 
     mainApp.controller('companyController', function($scope, $http, $window) {
         loadCompanyGrid($scope, $http);
@@ -188,7 +180,8 @@
 
     /* Update company data */
     function updateCompanyDetail($scope, $http) {
-        var updateCompanyURL = "updateCompany";
+        //var updateCompanyURL = "updateCompany";
+        var updateCompanyURL = "updateCompanyDetail";
         $scope.updateCompanyData = function() {
             var dataString = 'name='+$scope.name + '&address=' + $scope.address + '&city=' + $scope.city + '&country=' + $scope.country + '&';
             if($scope.email != '')

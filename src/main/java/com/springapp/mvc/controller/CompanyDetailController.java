@@ -5,10 +5,8 @@ import com.springapp.mvc.util.CompanyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -61,6 +59,16 @@ public class CompanyDetailController {
         if(!email.isEmpty()) c.setEmail(email);
         if(!contactNo.isEmpty()) c.setContactNo(contactNo);
         companyUtil.updateCompanyDetail(c);
+        return "jsonTemplate";
+    }
+
+    @RequestMapping(value="/updateCompanyDetail", method = RequestMethod.POST)
+    public String updateCompanyDetail(@RequestParam("Id")String id, @ModelAttribute("company")Company company, BindingResult result ) {
+        int companyId = Integer.parseInt(id);
+        if(company != null) {
+            company.setCompanyId(companyId);
+            companyUtil.updateCompanyDetail(company);
+        }
         return "jsonTemplate";
     }
 }
