@@ -3,7 +3,7 @@
  */
 var mainApp = angular.module("mainApp", []);
 
-mainApp.controller('companyController', function($scope, $http, $window) {
+mainApp.controller('companyController', function($scope, $http) {
     loadCompanyGrid($scope, $http);
     createCompany($scope, $http);
     loadCompanyData($scope, $http);
