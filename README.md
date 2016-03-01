@@ -1,5 +1,5 @@
-Company APIs
-===============================================
+Company data access APIs
+========================
 There is a RESTFul API to create company, update company, update other company related informations.
 
 1) To Register a company<br/>
