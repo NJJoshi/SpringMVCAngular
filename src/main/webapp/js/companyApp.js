@@ -86,7 +86,7 @@ function updateCompanyDetail($scope, $http) {
 
 /* Create company data */
 function createCompany($scope, $http){
-    var createCompanyURL = "company/create";
+    var createCompanyURL = "company";
     $scope.createNewCompany = function() {
         var dataString = 'name='+$scope.name + '&address=' + $scope.address + '&city=' + $scope.city + '&country=' + $scope.country + '&';
         if($scope.email != '')

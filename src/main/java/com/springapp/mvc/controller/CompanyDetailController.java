@@ -28,7 +28,7 @@ public class CompanyDetailController {
         return "jsonTemplate";
     }
 
-    @RequestMapping(value="/company/create", method=RequestMethod.POST)
+    @RequestMapping(value="/company", method=RequestMethod.POST)
     public String createCompany(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("city")String city,
                               @RequestParam("country")String country, @RequestParam("email")String email, @RequestParam("contactNo")String contactNo,
                               @RequestParam("owners")String owners) {
