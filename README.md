@@ -3,7 +3,7 @@ Company data access APIs
 There is a RESTFul API to create company, update company, update other company related informations.
 
 1) To Register a company<br/>
-   Make a call to URL : http://localhost:8080/SpringMVCAngular/company/create of Request type POST<br/>
+   Make a call to URL : http://localhost:8080/SpringMVCAngular/company of Request type POST<br/>
    With below mentioned parameters and its valid values:<br/>
    1) name as String value<br/>
    2) address as String value<br/>
@@ -14,7 +14,7 @@ There is a RESTFul API to create company, update company, update other company r
    7) owners as a string value (Coma separated value incase of multiple owners)<br/>
 <br/>
    e.x.<br/>
-   http://localhost:8080/SpringMVCAngular/company/create<br/>
+   http://localhost:8080/SpringMVCAngular/company<br/>
    Request body parameters : name=NJ&address=abc&city=NY&country=US&owners=ABC,BCD
 <br/><br/>
 2) Get all registered company
