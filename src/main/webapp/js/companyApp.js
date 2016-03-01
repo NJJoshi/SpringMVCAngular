@@ -12,7 +12,7 @@ mainApp.controller('companyController', function($scope, $http, $window) {
 
 /* Load all company grid data */
 function loadCompanyGrid($scope, $http) {
-    var getAllCompanyURL = 'getAllCompanies';
+    var getAllCompanyURL = 'company/all';
     $scope.detail = [];
     $http.get(getAllCompanyURL).success(function(response) {
         $scope.detail=response.companies;
@@ -22,7 +22,7 @@ function loadCompanyGrid($scope, $http) {
 /* Load company data */
 function loadCompanyData($scope, $http) {
     var selectedCompanyId;
-    var loadCompanyDataURL = "getCompany/";
+    var loadCompanyDataURL = "company/";
     $scope.selectData = {}
     $scope.loadCompanyData = function() {
         $scope.selectedCompanyId = $scope.selectData.company.companyId;
@@ -52,7 +52,7 @@ function loadCompanyData($scope, $http) {
 /* Update company data */
 function updateCompanyDetail($scope, $http) {
     //var updateCompanyURL = "updateCompany";
-    var updateCompanyURL = "updateCompanyDetail";
+    var updateCompanyURL = "company/detail/update";
     $scope.updateCompanyData = function() {
         var dataString = 'name='+$scope.name + '&address=' + $scope.address + '&city=' + $scope.city + '&country=' + $scope.country + '&';
         if($scope.email != '')
@@ -68,7 +68,7 @@ function updateCompanyDetail($scope, $http) {
             data: dataString,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
-            var getAllCompanyURL = 'getAllCompanies';
+            var getAllCompanyURL = 'company/all';
             $scope.name='';
             $scope.address='';
             $scope.city='';
@@ -86,7 +86,7 @@ function updateCompanyDetail($scope, $http) {
 
 /* Create company data */
 function createCompany($scope, $http){
-    var createCompanyURL = "createCompany";
+    var createCompanyURL = "company/create";
     $scope.createNewCompany = function() {
         var dataString = 'name='+$scope.name + '&address=' + $scope.address + '&city=' + $scope.city + '&country=' + $scope.country + '&';
         if($scope.email != '')
@@ -102,7 +102,7 @@ function createCompany($scope, $http){
             data: dataString,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
-            var getAllCompanyURL = 'getAllCompanies';
+            var getAllCompanyURL = 'company/all';
             $scope.name='';
             $scope.address='';
             $scope.city='';

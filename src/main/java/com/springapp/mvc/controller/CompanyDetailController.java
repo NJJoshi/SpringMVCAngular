@@ -21,14 +21,14 @@ public class CompanyDetailController {
     @Autowired
     private CompanyUtil companyUtil;
 
-    @RequestMapping(value="/getAllCompanies", method= RequestMethod.GET)
+    @RequestMapping(value="/company/all", method= RequestMethod.GET)
     public String getAllCompanies(Model model) {
         List<Company> companies = companyUtil.getAllCompanies();
         model.addAttribute("companies", companies);
         return "jsonTemplate";
     }
 
-    @RequestMapping(value="/createCompany", method=RequestMethod.POST)
+    @RequestMapping(value="/company/create", method=RequestMethod.POST)
     public String createCompany(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("city")String city,
                               @RequestParam("country")String country, @RequestParam("email")String email, @RequestParam("contactNo")String contactNo,
                               @RequestParam("owners")String owners) {
@@ -41,7 +41,7 @@ public class CompanyDetailController {
         return "jsonTemplate";
     }
 
-    @RequestMapping(value="/getCompany/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/company/{id}", method=RequestMethod.GET)
     public String getCompany(@PathVariable("id")String id, Model model) {
         Company filterObj = new Company();
         filterObj.setCompanyId(Integer.parseInt(id));
@@ -50,7 +50,7 @@ public class CompanyDetailController {
         return "jsonTemplate";
     }
 
-    @RequestMapping(value="/updateCompany", method=RequestMethod.POST)
+    @RequestMapping(value="/company/update", method=RequestMethod.POST)
     public String updateCompany(@RequestParam("name") String name, @RequestParam("address") String address, @RequestParam("city")String city,
                                 @RequestParam("country")String country, @RequestParam("email")String email, @RequestParam("contactNo")String contactNo,
                                 @RequestParam("owners")String owners, @RequestParam("Id")String id) {
@@ -62,7 +62,7 @@ public class CompanyDetailController {
         return "jsonTemplate";
     }
 
-    @RequestMapping(value="/updateCompanyDetail", method = RequestMethod.POST)
+    @RequestMapping(value="/company/detail/update", method = RequestMethod.POST)
     public String updateCompanyDetail(@RequestParam("Id")String id, @ModelAttribute("company")Company company, BindingResult result ) {
         int companyId = Integer.parseInt(id);
         if(company != null) {
