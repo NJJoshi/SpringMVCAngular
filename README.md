@@ -27,7 +27,7 @@ There is a RESTFul API to create company, update company, update other company r
 
 4) Update company detail
    Make a call to URL : http://localhost:8080/SpringMVCAngular/company/update of Request type POST
-   with below mentioned mandatory parameters
+   with below mentioned mandatory parameters: <br/>
    1) name as String value
    2) address as String value
    3) city as string value
