@@ -15,7 +15,7 @@ There is a RESTFul API to create company, update company, update other company r
 <br/>
    e.x.<br/>
    http://localhost:8080/SpringMVCAngular/company/create<br/>
-   Request body parameters : name=NJ&address=abc&city=NY&country=US&owners=ABC,BCD<br/>
+   Request body parameters : name=NJ&address=abc&city=NY&country=US&owners=ABC,BCD
 <br/><br/>
 2) Get all registered company
    Make a call to URL : http://localhost:8080/SpringMVCAngular/company/all
